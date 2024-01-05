@@ -1,0 +1,426 @@
+
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+* {
+	font-family: cursive;
+	font-size: 12px;
+
+    font-weight: 100;
+
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+:root {
+    --light-color: #929295; 
+    --dark-color: #666668; 
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+.app-holder {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+
+    background: #19191c;
+}
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    height: 100%;
+}
+
+.containers-wrapper {
+    display: flex;
+    justify-content: space-around;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 100%
+}
+
+.app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    position: sticky;
+
+    height: 7vh;
+
+    background: #141416;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+}
+
+.app-footer h2 {
+    color: var(--light-color);
+    font-size: min(20px, 2.25em);
+}
+
+.files-action-wrapper {
+    display: flex;
+    gap: 15px;
+
+    padding: 4px;
+}
+
+.file-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 250px;
+    height: 125px;
+
+    color: var(--light-color);
+
+    background: #141416;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    border: 2px dashed var(--light-color);
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition: .2s all;
+}
+
+.file-action.is-limit {
+    border-color: rgb(97, 17, 17) !important;
+    cursor: default !important;
+}
+
+.file-action:hover {
+    border-color: var(--dark-color);
+}
+
+.file-action.no-file::before,
+.loaded-files-wrapper.is-empty::before {
+    color: inherit;
+    font-size: min(20px, 2.25em);
+}
+
+.file-action.is-limit::before {
+    color: rgb(97, 17, 17);
+}
+
+.file-action.no-file:first-child::before {
+    content: "Сюда фон";
+}
+
+.file-action.no-file:last-child::before {
+    content: "Сюда чат";
+}
+
+.loaded-files-wrapper {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+
+    min-width: 250px;
+    min-height: 150px;
+
+    color: var(--light-color);
+
+    background: #141416;
+
+    padding: 8px;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+.loaded-files-wrapper.is-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(97, 17, 17);
+
+    border: 2px solid rgb(97, 17, 17);
+}
+
+.loaded-files-wrapper.is-empty::before {
+    content: "Нету изображений чата";
+}
+
+.loaded-file-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 2px;
+
+    border-radius: 4px;
+
+    transform: scale(.9);
+
+    transition: .3s all;
+
+    cursor: pointer;
+}
+
+.loaded-file-card span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 25px;
+
+    font-size: 14px;
+
+    background: #1e1e21;
+}
+
+.loaded-file-card:hover {
+    transform: scale(.95);
+}
+
+/*
+.loaded-file-card:hover::before {
+    content: "x";
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+
+    color: rgb(97, 17, 17);
+    font-size: 3em;
+
+    background: rgba(97, 17, 17, 0.56);
+
+    border-radius: 4px;
+
+    transform: scale(.99);
+}
+*/
+
+.loaded-file {
+    width: 250px;
+
+    border-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.toolbar-wrapper, .result-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+
+    background: #141416;
+
+    border-radius: 6px;
+
+    padding: 8px;
+    padding-bottom: 12px;
+
+    box-sizing: border-box;
+}
+
+.toolbar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.toggler-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.toggler-item span {
+    color: var(--dark-color);
+    font-size: min(20px, 2.25em);
+}
+
+.toggler-item.is-active span {
+    color: var(--light-color);
+}
+
+.toggler-btn {
+    display: grid;
+    place-items: center;
+
+    width: min(25px, 2.35em);
+    height: min(25px, 2.35em);
+
+    background: #3c3947;
+
+    border-radius: 6px;
+
+    padding: 3px;
+
+    box-sizing: border-box;
+
+    align-self: self-end;
+}
+
+.toggler-item.is-active .toggler-btn::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+
+    background: #64616f;
+
+    border-radius: 6px;
+}
+
+.result-btn {
+    width: max-content;
+
+    cursor: pointer;
+}
+
+.result-btn.is-disabled {
+    cursor: default !important;
+}
+
+.result-btn:not(.is-disabled):active {
+    transform: scale(.95);
+}
+
+.result-btn span {
+    color: var(--dark-color);
+    font-size: min(20px, 2.25em);
+
+    transition: .2s color;
+}
+
+.result-btn.is-disabled span {
+    color: rgb(97, 17, 17) !important;
+}
+
+.result-btn:hover span {
+    color: var(--light-color);
+}
+
+.canvas-holder {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 55px 200px;
+
+    box-sizing: border-box;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    height: auto;
+    min-width: 800px;
+
+    background: #141416c8;
+
+    border: 8px solid #222229;
+    border-radius: 8px;
+}
+
+.close-btn, 
+.download-btn {
+    display: flex;
+
+    position: absolute;
+
+    color: var(--dark-color);
+    font-size: min(24px, 2.5em);
+
+    margin-right: 12px;
+    margin-top: 20px;
+
+    line-height: 0;
+
+    opacity: 0;
+
+    transform: scaleX(1.25);
+
+    transition: .2s all;
+
+    cursor: pointer;
+}
+
+.download-btn {
+    margin-right: 40px;
+}
+
+.close-btn:hover, 
+.download-btn:hover {
+    color: var(--light-color);
+}
+
+.canvas-wrapper:hover .close-btn,
+.canvas-wrapper:hover .download-btn {
+    opacity: 1;
+}
+
+#result_canvas {
+    width: 100%;
+    height: 100%;
+}
